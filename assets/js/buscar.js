@@ -1,36 +1,67 @@
-// URL del Web App de Google Apps Script
-const urlWebApp = "URL_DEL_WEB_APP";
+document.getElementById("btnBuscar").addEventListener("click", function () {
+    let inputBusqueda = document.getElementById("inputBusqueda").value.trim();
 
-// Función para realizar la búsqueda
-async function buscarDatos() {
-    const query = document.getElementById("buscador").value.toLowerCase(); // Captura el término de búsqueda
-    const tablaResultados = document.getElementById("resultados");
-    tablaResultados.innerHTML = ""; // Limpia resultados previos
-
-    try {
-        const respuesta = await fetch(urlWebApp);
-        const datos = await respuesta.json();
-
-        // Filtra los datos por las columnas especificadas
-        const resultados = datos.filter(dato => 
-            dato["Número de Tag"].toLowerCase().includes(query) ||
-            dato["Nombre del Solicitante"].toLowerCase().includes(query) ||
-            dato["Placas"].toLowerCase().includes(query) ||
-            dato["Empresa / Proyecto"].toLowerCase().includes(query)
-        );
-
-        // Renderiza los resultados en la tabla
-        resultados.forEach(dato => {
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td>${dato["Número de Tag"]}</td>
-                <td>${dato["Nombre del Solicitante"]}</td>
-                <td>${dato["Placas"]}</td>
-                <td>${dato["Empresa / Proyecto"]}</td>
-            `;
-            tablaResultados.appendChild(fila);
-        });
-    } catch (error) {
-        console.error("Error al buscar datos:", error);
+    if (inputBusqueda === "") {
+        alert("Por favor, ingresa un término de búsqueda.");
+        return;
     }
+
+    let urlWebApp = "https://script.google.com/macros/s/AKfycbzu9WiRYETwDQAQ0TW0eNFZaIFjHe21UKkjeOmsBDTVWmD9RkW5taeq0A5FC8Ve203s3A/exec";
+    
+    fetch(`${urlWebApp}?query=${encodeURIComponent(inputBusqueda)}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Datos recibidos:", data);
+        mostrarResultados(data);
+    })
+    .catch(error => console.error("Error al obtener los datos:", error));
+});
+
+function mostrarResultados(datos) {
+    let tabla = document.getElementById("tablaResultados");
+    let tbody = tabla.querySelector("tbody");
+
+    // Limpiar contenido anterior
+    tbody.innerHTML = "";
+
+    if (datos.length === 0) {
+        let fila = tbody.insertRow();
+        let celda = fila.insertCell(0);
+        celda.colSpan = 6; // Ajusta según el número de columnas
+        celda.textContent = "No se encontraron resultados.";
+        celda.style.textAlign = "center";
+        return;
+    }
+
+    datos.forEach(filaData => {
+        let fila = tbody.insertRow();
+
+        let celdaTag = fila.insertCell(0);
+        celdaTag.textContent = filaData.numeroTag;
+
+        let celdaNombre = fila.insertCell(1);
+        celdaNombre.textContent = filaData.nombrePersona;
+
+        let celdaPlacas = fila.insertCell(2);
+        celdaPlacas.textContent = filaData.placasVehiculo;
+
+        let celdaEmpresa = fila.insertCell(3);
+        celdaEmpresa.textContent = filaData.empresa;
+
+        let celdaOtroCampo1 = fila.insertCell(4);
+        celdaOtroCampo1.textContent = filaData.otroCampo1; // Ajusta si hay más campos
+
+        let celdaOtroCampo2 = fila.insertCell(5);
+        celdaOtroCampo2.textContent = filaData.otroCampo2; // Ajusta si hay más campos
+    });
 }

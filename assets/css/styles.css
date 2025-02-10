@@ -154,3 +154,65 @@ html {
     outline: none;
     border-radius: 5px;
 }
+
+/* ------------Tabla de resultados */
+.caja__busqueda {
+    /* border: 2px solid red; */
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.txt__busqueda {
+    width: 300px;
+    height: 35px;
+    padding: 3px 7px;
+}
+
+.txt__busqueda::-webkit-input-placeholder {
+    text-align: center;
+    /* padding: 3px 7px; */
+}
+
+
+/* Estilos para el botón de la clase .slide */
+.btn__busqueda {
+    --color: white;
+    /* Color base */
+    --hover: var(--color-background);
+    /* Color al hacer hover */
+    color: var(--hover);
+    /* Color del texto */
+    background: none;
+    /* Fondo transparente */
+    border: 2px solid var(--hover);
+    /* Borde con el color base */
+    font: inherit;
+    /* Hereda la fuente del padre */
+    padding: 3px 10px;
+    width: 100px;
+    /* Espaciado interno */
+    transition: 0.25s;
+    /* Transición suave */
+}
+
+/* Efecto al hacer hover o focus */
+.btn__busqueda:hover,
+.btn__busqueda:focus {
+    box-shadow: inset 6.5em 0 0 0 var(--hover);
+    /* Sombra interna que llena el botón */
+    border-color: var(--hover);
+    /* Cambia el color del borde */
+    color: #fff;
+    /* Cambia el color del texto a blanco */
+}
+
+.tabla__resultados {
+    margin: 0 auto;
+    border: 2px solid red;
+
+}

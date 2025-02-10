@@ -20,7 +20,7 @@ document.getElementById("formulario").addEventListener("submit", function (event
     };
 
     // URL del Web App de Google Apps Script
-    const urlWebApp = "https://script.google.com/macros/s/AKfycbyWeCgsf0_8SISFBk3OoFNoHr0jWPwBo5Z9m13tcffORXn0MqfaWEZvguDkpnd4Y8uqwA/exec";
+    const urlWebApp = "https://script.google.com/macros/s/AKfycbzu9WiRYETwDQAQ0TW0eNFZaIFjHe21UKkjeOmsBDTVWmD9RkW5taeq0A5FC8Ve203s3A/exec";
 
     // Enviar los datos a Google Sheets
     fetch(urlWebApp, {
@@ -37,3 +37,6 @@ document.getElementById("formulario").addEventListener("submit", function (event
     })
     .catch(error => console.error("Error al enviar los datos:", error));
 });
+
+
+

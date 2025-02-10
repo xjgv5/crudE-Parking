@@ -5,10 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
+    <nav class="navegacion">
+        <a class="navegacion__btn-regreso" href="index.html">
+            <i class="btn-regreso__icon fa-solid fa-arrow-left"></i>
+        </a>
+    </nav>
+    <div class="caja__busqueda">
+        <input type="text" id="inputBusqueda" class="txt__busqueda" placeholder="Buscar">
+        <button id="btnBuscar" class="btn__busqueda">Buscar</button>
+    </div>
+
+    <table id="tablaResultados" class="tabla__resultados">
+        <thead>
+            <tr>
+                <th>Número de Tag</th>
+                <th>Número de Alta</th>
+                <th>Nombre del Local</th>
+                <th>Nombre del Solicitante</th>
+                <th>Empresa / Proyecto</th>
+                <th>Status de Activación</th>
+                <th>Status de Entrega</th>
+                <th>Fecha de Alta</th>
+                <th>Tel</th>
+                <th>Correo</th>
+                <th>Modelo</th>
+                <th>Placas</th>
+                <th>Año</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="assets/js/buscar.js"></script>
 </body>
 
 </html>
