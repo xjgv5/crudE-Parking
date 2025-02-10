@@ -1,21 +1,39 @@
-document.getElementById("miFormulario").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.getElementById("formulario").addEventListener("submit", function (event) {
+    event.preventDefault(); // Evita que el formulario se recargue
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwCA7zYgjEu9Wk5tOusHJLxPYpSvWUmxJLHTKgNNM4tc0PGPZ7R3JT8wZ6vnfoCRP50-Q/exec";
-    const formData = new FormData(this);
-    const jsonData = {};
+    // Capturar los valores de los campos del formulario
+    let datosFormulario = {
+        numeroTag: document.getElementById("numeroTag").value,
+        numeroAlta: document.getElementById("numeroAlta").value,
+        nombreLocal: document.getElementById("nombreLocal").value,
+        nombreSolicitante: document.getElementById("nombreSolicitante").value,
+        empresaProyecto: document.getElementById("empresaProyecto").value,
+        statusActivacion: document.getElementById("statusActivacion").value,
+        statusEntrega: document.getElementById("statusEntrega").value,
+        fechaAlta: document.getElementById("fechaAlta").value,
+        tel: document.getElementById("tel").value,
+        correo: document.getElementById("correo").value,
+        modelo: document.getElementById("modelo").value,
+        color: document.getElementById("color").value,
+        placas: document.getElementById("placas").value,
+        anio: document.getElementById("anio").value
+    };
 
-    formData.forEach((value, key) => jsonData[key] = value);
+    // URL del Web App de Google Apps Script
+    const urlWebApp = "https://script.google.com/macros/s/AKfycbyWeCgsf0_8SISFBk3OoFNoHr0jWPwBo5Z9m13tcffORXn0MqfaWEZvguDkpnd4Y8uqwA/exec";
 
-    fetch(scriptURL, {
+    // Enviar los datos a Google Sheets
+    fetch(urlWebApp, {
         method: "POST",
-        body: JSON.stringify(jsonData),
-        headers: { "Content-Type": "application/json" }
+        mode: "no-cors", // Evita bloqueos por CORS
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datosFormulario)
     })
-    .then(response => response.text())
-    .then(data => {
-        alert("Datos enviados correctamente");
-        document.getElementById("miFormulario").reset();
+    .then(() => {
+        alert("Datos enviados correctamente.");
+        document.getElementById("formulario").reset(); // Limpiar el formulario
     })
-    .catch(error => console.error("Error:", error));
-})
+    .catch(error => console.error("Error al enviar los datos:", error));
+});

@@ -19,45 +19,63 @@
         </a>
     </nav>
     <div class="container">
-        <h2 class="container__title">Agregar</h2>
+        <h1 class="container__title">Agregar</h1>
 
-        <form action="" class="container__form">
-            <div class="form__row">
-                <div class="form__item">
-                    <label class="form__label" for="">Número de tag</label>
-                    <input class="form__input" type="text" name="" id="tagNumero" placeholder="">
-                </div>
+        <form id="formulario">
+            <label for="numeroTag">Número de Tag:</label>
+            <input type="text" id="numeroTag">
 
-                <div class="form__item">
-                    <label class="form__label" for="">Número de alta</label>
-                    <input class="form__input" type="text" name="" id="altaNumero" placeholder="">
-                </div>
+            <label for="numeroAlta">Número de Alta:</label>
+            <input type="text" id="numeroAlta">
 
-                <div class="form__item">
-                    <label class="form__label" for="">Nombre del local</label>
-                    <input class="form__input" type="text" name="" id="localNombre" placeholder="">
-                </div>
+            <label for="nombreLocal">Nombre del Local:</label>
+            <input type="text" id="nombreLocal">
 
-                <div class="form__item">
-                    <label class="form__label" for="">Nombre del solicitante</label>
-                    <input class="form__input" type="text" name="" id="solicitanteNombre" placeholder="">
-                </div>
+            <label for="nombreSolicitante">Nombre del Solicitante:</label>
+            <input type="text" id="nombreSolicitante">
 
-                <div class="form__item">
-                    <label class="form__label" for="">Empresa / Proyecto</label>
-                    <input class="form__input" type="text" name="" id="empresaProyecto" placeholder="">
-                </div>
+            <label for="empresaProyecto">Empresa / Proyecto:</label>
+            <input type="text" id="empresaProyecto">
 
-                <div class="form__item">
-                    <label class="form__label" for="">Status de activación</label>
-                    <input class="form__input" type="text" name="" id="empresaProyecto" placeholder="">
-                </div>
+            <label for="statusActivacion">Status de Activación:</label>
+            <select id="statusActivacion">
+                <option value="No activado">No activado</option>
+                <option value="Activado">Activado</option>
+            </select>
 
-            </div>
+            <label for="statusEntrega">Status de Entrega:</label>
+            <select id="statusEntrega">
+                <option value="No entregado">No entregado</option>
+                <option value="Entregado">Entregado</option>
+            </select>
+
+            <label for="fechaAlta">Fecha de Alta:</label>
+            <input type="date" id="fechaAlta">
+
+            <label for="tel">Tel:</label>
+            <input type="tel" id="tel">
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo">
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo">
+
+            <label for="color">Color:</label>
+            <input type="text" id="color">
+
+            <label for="placas">Placas:</label>
+            <input type="text" id="placas">
+
+            <label for="anio">Año:</label>
+            <input type="number" id="anio">
+
+            <button type="submit">Guardar</button>
         </form>
 
-    </div>
 
+    </div>
+    <script src="assets/js/datos.js"></script>
 </body>
 
 </html>
