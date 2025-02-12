@@ -67,6 +67,8 @@ registroForm.addEventListener('submit', (e) => {
   });
 });
 
+
+// Funcion para el toast
 function mostrarToast(mensaje) {
   const toast = document.getElementById('toast');
   const toastMessage = document.getElementById('toastMessage');
@@ -82,3 +84,5 @@ function mostrarToast(mensaje) {
     toast.classList.remove('show');
   }, 3000);
 }
+
+
