@@ -174,3 +174,68 @@ html {
     width: 100%;
 
 }
+
+
+/* ____________  adicionales _______________ */
+
+
+.toast {
+    visibility: hidden;
+    /* Oculta el toast por defecto */
+    min-width: 250px;
+    /* Ancho mínimo */
+    margin-left: -125px;
+    /* Centra el toast */
+    background-color: #333;
+    /* Color de fondo */
+    color: #fff;
+    /* Color del texto */
+    text-align: center;
+    /* Alineación del texto */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    padding: 16px;
+    /* Espaciado interno */
+    position: fixed;
+    /* Posición fija */
+    z-index: 1000;
+    /* Asegura que esté por encima de otros elementos */
+    left: 50%;
+    /* Centra horizontalmente */
+    bottom: 30px;
+    /* Posición desde la parte inferior */
+    font-size: 16px;
+    /* Tamaño de la fuente */
+}
+
+/* Muestra el toast */
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animación de entrada */
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+/* Animación de salida */
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

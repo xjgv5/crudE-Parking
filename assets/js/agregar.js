@@ -22,7 +22,7 @@ const registroForm = document.getElementById('registroForm');
 
 // Maneja el envío del formulario
 registroForm.addEventListener('submit', (e) => {
-  e.preventDefault(); // Evita que el formulario se envíe
+  e.preventDefault(); 
 
   // Obtén los valores del formulario
   const numeroTag = document.getElementById('numeroTag').value;
@@ -60,9 +60,25 @@ registroForm.addEventListener('submit', (e) => {
     placas: placas,
     año: año
   }).then(() => {
-    alert("Registro guardado correctamente");
+    mostrarToast("Registro guardado correctamente");
     registroForm.reset(); // Limpia el formulario
   }).catch((error) => {
     console.error("Error al guardar el registro:", error);
   });
 });
+
+function mostrarToast(mensaje) {
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toastMessage');
+
+  // Asigna el mensaje al toast
+  toastMessage.textContent = mensaje;
+
+  // Muestra el toast
+  toast.classList.add('show');
+
+  // Oculta el toast después de 3 segundos
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000);
+}

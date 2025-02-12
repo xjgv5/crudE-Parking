@@ -73,32 +73,39 @@ console.log("Registros encontrados:", resultados);
 
 // Función para mostrar los resultados en la tabla
 function mostrarResultados(resultados) {
-  const tablaResultados = document.getElementById('tablaResultados').getElementsByTagName('tbody')[0];
-  tablaResultados.innerHTML = ""; // Limpia la tabla
-
-  if (resultados.length > 0) {
-    resultados.forEach((registro) => {
+    const tablaResultados = document.getElementById('tablaResultados').getElementsByTagName('tbody')[0];
+    tablaResultados.innerHTML = ""; // Limpia la tabla
+  
+    if (resultados.length > 0) {
+      resultados.forEach((registro) => {
+        const fila = tablaResultados.insertRow();
+  
+        fila.insertCell().textContent = registro.numeroTag || "";
+        fila.insertCell().textContent = registro.numeroAlta || "";
+        fila.insertCell().textContent = registro.nombreLocal || "";
+        fila.insertCell().textContent = registro.nombreSolicitante || "";
+        fila.insertCell().textContent = registro.empresaProyecto || "";
+        fila.insertCell().textContent = registro.statusActivacion || "";
+        fila.insertCell().textContent = registro.statusEntrega || "";
+        fila.insertCell().textContent = registro.fechaAlta || "";
+        fila.insertCell().textContent = registro.telefono || "";
+        fila.insertCell().textContent = registro.correo || "";
+        fila.insertCell().textContent = registro.modelo || "";
+        fila.insertCell().textContent = registro.color || "";
+        fila.insertCell().textContent = registro.placas || "";
+        fila.insertCell().textContent = registro.año || "";
+  
+        // Agrega un botón "Editar"
+        const celdaAcciones = fila.insertCell();
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = "Editar";
+        btnEditar.addEventListener('click', () => cargarFormularioEdicion(registro));
+        celdaAcciones.appendChild(btnEditar);
+      });
+    } else {
       const fila = tablaResultados.insertRow();
-
-      fila.insertCell().textContent = registro.numeroTag || "";
-      fila.insertCell().textContent = registro.numeroAlta || "";
-      fila.insertCell().textContent = registro.nombreLocal || "";
-      fila.insertCell().textContent = registro.nombreSolicitante || "";
-      fila.insertCell().textContent = registro.empresaProyecto || "";
-      fila.insertCell().textContent = registro.statusActivacion || "";
-      fila.insertCell().textContent = registro.statusEntrega || "";
-      fila.insertCell().textContent = registro.fechaAlta || "";
-      fila.insertCell().textContent = registro.telefono || "";
-      fila.insertCell().textContent = registro.correo || "";
-      fila.insertCell().textContent = registro.modelo || "";
-      fila.insertCell().textContent = registro.color || "";
-      fila.insertCell().textContent = registro.placas || "";
-      fila.insertCell().textContent = registro.año || "";
-    });
-  } else {
-    const fila = tablaResultados.insertRow();
-    const celda = fila.insertCell();
-    celda.colSpan = 14;
-    celda.textContent = "No se encontraron resultados.";
+      const celda = fila.insertCell();
+      celda.colSpan = 15; // Ajusta el colspan según el número de columnas
+      celda.textContent = "No se encontraron resultados.";
+    }
   }
-}
