@@ -18,64 +18,95 @@
             <i class="btn-regreso__icon fa-solid fa-arrow-left"></i>
         </a>
     </nav>
+
     <div class="container">
         <h1 class="container__title">Agregar</h1>
 
-        <form id="formulario">
-            <label for="numeroTag">Número de Tag:</label>
-            <input type="text" id="numeroTag">
+        <form id="registroForm" class="formulario">
+            <!-- .formulario__contenedor -->
+            <label class="formulario__etiqueta" for="numeroTag">Número de Tag:</label>
+            <input class="formulario__input" type="text" id="numeroTag">
 
-            <label for="numeroAlta">Número de Alta:</label>
-            <input type="text" id="numeroAlta">
+            <label class="formulario__etiqueta" for="numeroAlta">Número de Alta:</label>
+            <input class="formulario__input" type="text" id="numeroAlta">
 
-            <label for="nombreLocal">Nombre del Local:</label>
-            <input type="text" id="nombreLocal">
+            <label class="formulario__etiqueta" for="nombreLocal">Nombre del Local:</label>
+            <input class="formulario__input" type="text" id="nombreLocal">
 
-            <label for="nombreSolicitante">Nombre del Solicitante:</label>
-            <input type="text" id="nombreSolicitante">
+            <label class="formulario__etiqueta" for="nombreSolicitante">Nombre del Solicitante:</label>
+            <input class="formulario__input" type="text" id="nombreSolicitante">
 
-            <label for="empresaProyecto">Empresa / Proyecto:</label>
-            <input type="text" id="empresaProyecto">
+            <label class="formulario__etiqueta" for="empresaProyecto">Empresa / Proyecto:</label>
+            <input class="formulario__input" type="text" id="empresaProyecto">
 
-            <label for="statusActivacion">Status de Activación:</label>
+            <label class="formulario__etiqueta" for="statusActivacion">Status de Activación:</label>
             <select id="statusActivacion">
                 <option value="No activado">No activado</option>
                 <option value="Activado">Activado</option>
             </select>
 
-            <label for="statusEntrega">Status de Entrega:</label>
+            <label class="formulario__etiqueta" for="statusEntrega">Status de Entrega:</label>
             <select id="statusEntrega">
                 <option value="No entregado">No entregado</option>
                 <option value="Entregado">Entregado</option>
             </select>
 
-            <label for="fechaAlta">Fecha de Alta:</label>
-            <input type="date" id="fechaAlta">
+            <label class="formulario__etiqueta" for="fechaAlta">Fecha de Alta:</label>
+            <input class="formulario__input" type="date" id="fechaAlta">
 
-            <label for="tel">Tel:</label>
-            <input type="tel" id="tel">
+            <label class="formulario__etiqueta" for="telefono">Teléfono:</label>
+            <input class="formulario__input" type="tel" id="telefono">
 
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo">
+            <label class="formulario__etiqueta" for="correo">Correo:</label>
+            <input class="formulario__input" type="email" id="correo">
 
-            <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo">
+            <label class="formulario__etiqueta" for="modelo">Modelo:</label>
+            <input class="formulario__input" type="text" id="modelo">
 
-            <label for="color">Color:</label>
-            <input type="text" id="color">
+            <label class="formulario__etiqueta" for="color">Color:</label>
+            <input class="formulario__input" type="text" id="color">
 
-            <label for="placas">Placas:</label>
-            <input type="text" id="placas">
+            <label class="formulario__etiqueta" for="placas">Placas:</label>
+            <input class="formulario__input" type="text" id="placas">
 
-            <label for="anio">Año:</label>
-            <input type="number" id="anio">
+            <label class="formulario__etiqueta" for="anio">Año:</label>
+            <input class="formulario__input" type="number" id="anio">
 
-            <button type="submit">Guardar</button>
+            <button class="btn__primary" type="submit">Guardar</button>
         </form>
 
 
     </div>
-    <script src="assets/js/datos.js"></script>
+
+    <script type="module">
+        // Importa las funciones que necesitas de los SDKs de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+
+        // Configuración de Firebase (la que obtuviste de la consola)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAm6-dlmI2VC2Njf1lURUILRKIqy056yc",
+            authDomain: "e-parking-bd.firebaseapp.com",
+            databaseURL: "https://e-parking-bd-default-rtdb.firebaseio.com",
+            projectId: "e-parking-bd",
+            storageBucket: "e-parking-bd.firebasestorage.app",
+            messagingSenderId: "1026877978625",
+            appId: "1:1026877978625:web:0979a3ee2cc6ddee9aa800",
+            measurementId: "G-T2RLWFEMDF"
+        };
+
+        // Inicializa Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Inicializa Analytics (opcional, si lo necesitas)
+        const analytics = getAnalytics(app);
+
+        // Prueba de conexión
+        console.log("Firebase inicializado correctamente:", app);
+    </script>
+
+    <script type="module" src="assets/js/agregar.js" defer></script>
+
 </body>
 
 </html>

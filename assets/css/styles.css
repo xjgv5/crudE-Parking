@@ -88,71 +88,22 @@ html {
 }
 
 /* Formulario */
-.container__form {
-    /* border: 2px solid red; */
-    width: 95%;
+
+.formulario {
+    border: 2px solid red;
+    width: 85%;
     display: flex;
-    justify-content: end;
-    /* padding: 5px 10px; */
+    justify-content: center;
     flex-wrap: wrap;
-    box-shadow: 0px 0px 20px rgb(226, 226, 226);
-    border-radius: 10px;
-    padding: 15px 15px;
 }
 
-.form__row {
-    display: flex;
-    grid-template-columns: 2;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    padding: 10px 10px;
-    /* border: 2px solid springgreen; */
-    margin-bottom: 10px;
+.formulario__etiqueta {
+    margin-right: 10px;
 }
 
-.form__item {
-    flex-basis: 49%;
-}
-
-
-.form__label {
-    margin-bottom: 10px;
-}
-
-.form__input {
-    border: 1px solid #e3e3e3;
-    padding: 7px 5px;
-    border-radius: 7px;
-    margin-right: 25px;
-    width: 100%;
-}
-
-.form__input:focus {
-    border-color: var(--color-background);
-    outline: none;
-}
-
-.btn__enviar {
-    padding: 10px 25px;
-    border: none;
-    background-color: var(--color-background);
-    color: white;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-}
-
-.btn__enviar:hover {
-    background-color: #00668b;
-}
-
-.form__select {
-    width: 100%;
-    height: 33px;
-    border-color: #e3e3e3;
-    outline: none;
-    border-radius: 5px;
+.formulario__input {
+    width: 200px;
+    margin: 6px 10px;
 }
 
 /* ------------Tabla de resultados */
@@ -180,7 +131,7 @@ html {
 
 
 /* Estilos para el botón de la clase .slide */
-.btn__busqueda {
+.btn__primary {
     --color: white;
     /* Color base */
     --hover: var(--color-background);
@@ -201,8 +152,8 @@ html {
 }
 
 /* Efecto al hacer hover o focus */
-.btn__busqueda:hover,
-.btn__busqueda:focus {
+.btn__primary:hover,
+.btn__primary:focus {
     box-shadow: inset 6.5em 0 0 0 var(--hover);
     /* Sombra interna que llena el botón */
     border-color: var(--hover);
@@ -211,8 +162,15 @@ html {
     /* Cambia el color del texto a blanco */
 }
 
+.contenedor__tabla {
+    width: 85%;
+    margin: 0 auto;
+}
+
 .tabla__resultados {
     margin: 0 auto;
     border: 2px solid red;
+    table-layout: fixed;
+    width: 100%;
 
 }

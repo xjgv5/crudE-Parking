@@ -1,67 +1,104 @@
-document.getElementById("btnBuscar").addEventListener("click", function () {
-    let inputBusqueda = document.getElementById("inputBusqueda").value.trim();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
-    if (inputBusqueda === "") {
-        alert("Por favor, ingresa un término de búsqueda.");
-        return;
+// Configuración de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDAm6-dlmI2VC2Njf1lURUILRKIqy056yc",
+  authDomain: "e-parking-bd.firebaseapp.com",
+  databaseURL: "https://e-parking-bd-default-rtdb.firebaseio.com",
+  projectId: "e-parking-bd",
+  storageBucket: "e-parking-bd.firebasestorage.app",
+  messagingSenderId: "1026877978625",
+  appId: "1:1026877978625:web:0979a3ee2cc6ddee9aa800",
+  measurementId: "G-T2RLWFEMDF"
+};
+
+// Inicializa Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// Espera a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("hola")
+  const btnBuscar = document.getElementById('btnBuscar');
+  const inputBusqueda = document.getElementById('busqueda');
+  const tablaResultados = document.getElementById('tablaResultados').getElementsByTagName('tbody')[0];
+
+  // Maneja la búsqueda
+  btnBuscar.addEventListener('click', () => {
+    const terminoBusqueda = inputBusqueda.value.trim();
+
+    if (terminoBusqueda) {
+      buscarRegistros(terminoBusqueda);
+    } else {
+      alert("Por favor, ingresa un término de búsqueda.");
     }
+    console.log("Término de búsqueda:", terminoBusqueda);
 
-    let urlWebApp = "https://script.google.com/macros/s/AKfycbzu9WiRYETwDQAQ0TW0eNFZaIFjHe21UKkjeOmsBDTVWmD9RkW5taeq0A5FC8Ve203s3A/exec";
-    
-    fetch(`${urlWebApp}?query=${encodeURIComponent(inputBusqueda)}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Datos recibidos:", data);
-        mostrarResultados(data);
-    })
-    .catch(error => console.error("Error al obtener los datos:", error));
+  });
 });
 
-function mostrarResultados(datos) {
-    let tabla = document.getElementById("tablaResultados");
-    let tbody = tabla.querySelector("tbody");
+// Función para buscar registros
+async function buscarRegistros(termino) {
+  const registrosRef = ref(database, 'registros');
+  const snapshot = await get(registrosRef);
 
-    // Limpiar contenido anterior
-    tbody.innerHTML = "";
+  if (snapshot.exists()) {
+    const registros = snapshot.val();
+    const resultados = [];
 
-    if (datos.length === 0) {
-        let fila = tbody.insertRow();
-        let celda = fila.insertCell(0);
-        celda.colSpan = 6; // Ajusta según el número de columnas
-        celda.textContent = "No se encontraron resultados.";
-        celda.style.textAlign = "center";
-        return;
+    // Recorre todos los registros
+    for (const id in registros) {
+      const registro = registros[id];
+
+      // Busca en los campos especificados
+      if (
+        registro.numeroTag.includes(termino) ||
+        registro.numeroAlta.includes(termino) ||
+        registro.nombreSolicitante.includes(termino) ||
+        registro.placas.includes(termino) ||
+        registro.modelo.includes(termino)
+      ) {
+        resultados.push(registro);
+      }
     }
 
-    datos.forEach(filaData => {
-        let fila = tbody.insertRow();
+    // Muestra los resultados en la tabla
+    mostrarResultados(resultados);
+console.log("Registros encontrados:", resultados);
+  } else {
+    console.log("No se encontraron registros.");
+  }
+}
 
-        let celdaTag = fila.insertCell(0);
-        celdaTag.textContent = filaData.numeroTag;
+// Función para mostrar los resultados en la tabla
+function mostrarResultados(resultados) {
+  const tablaResultados = document.getElementById('tablaResultados').getElementsByTagName('tbody')[0];
+  tablaResultados.innerHTML = ""; // Limpia la tabla
 
-        let celdaNombre = fila.insertCell(1);
-        celdaNombre.textContent = filaData.nombrePersona;
+  if (resultados.length > 0) {
+    resultados.forEach((registro) => {
+      const fila = tablaResultados.insertRow();
 
-        let celdaPlacas = fila.insertCell(2);
-        celdaPlacas.textContent = filaData.placasVehiculo;
-
-        let celdaEmpresa = fila.insertCell(3);
-        celdaEmpresa.textContent = filaData.empresa;
-
-        let celdaOtroCampo1 = fila.insertCell(4);
-        celdaOtroCampo1.textContent = filaData.otroCampo1; // Ajusta si hay más campos
-
-        let celdaOtroCampo2 = fila.insertCell(5);
-        celdaOtroCampo2.textContent = filaData.otroCampo2; // Ajusta si hay más campos
+      fila.insertCell().textContent = registro.numeroTag || "";
+      fila.insertCell().textContent = registro.numeroAlta || "";
+      fila.insertCell().textContent = registro.nombreLocal || "";
+      fila.insertCell().textContent = registro.nombreSolicitante || "";
+      fila.insertCell().textContent = registro.empresaProyecto || "";
+      fila.insertCell().textContent = registro.statusActivacion || "";
+      fila.insertCell().textContent = registro.statusEntrega || "";
+      fila.insertCell().textContent = registro.fechaAlta || "";
+      fila.insertCell().textContent = registro.telefono || "";
+      fila.insertCell().textContent = registro.correo || "";
+      fila.insertCell().textContent = registro.modelo || "";
+      fila.insertCell().textContent = registro.color || "";
+      fila.insertCell().textContent = registro.placas || "";
+      fila.insertCell().textContent = registro.año || "";
     });
+  } else {
+    const fila = tablaResultados.insertRow();
+    const celda = fila.insertCell();
+    celda.colSpan = 14;
+    celda.textContent = "No se encontraron resultados.";
+  }
 }
