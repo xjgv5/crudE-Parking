@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+import { getDatabase, ref, get, set, remove } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -102,8 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Actualiza el registro en Firebase
         set(ref(database, `registros/${idRegistro}`), registroActualizado)
           .then(() => {
-
-            mostrarToast("Registro actualizado correctamente.");
+            alert("Registro actualizado correctamente.");
             modal.style.display = "none"; // Cierra el modal
             buscarRegistros(""); // Recarga los resultados
           })
@@ -182,29 +181,33 @@ function mostrarResultadosModal(resultados) {
       btnEditar.textContent = "Editar";
       btnEditar.addEventListener('click', () => abrirModalEditar(registro));
       celdaAcciones.appendChild(btnEditar);
+
+      // Agrega un botón "Eliminar"
+      const btnEliminar = document.createElement('button');
+      btnEliminar.textContent = "Eliminar";
+      btnEliminar.addEventListener('click', () => eliminarRegistro(registro.id));
+      celdaAcciones.appendChild(btnEliminar);
     });
   } else {
     const fila = tablaResultados.insertRow();
     const celda = fila.insertCell();
-    celda.colSpan = 15; // Ajusta el colspan según el número de columnas
+    celda.colSpan = 16; // Ajusta el colspan según el número de columnas
     celda.textContent = "No se encontraron resultados.";
   }
 }
 
+// Función para eliminar un registro
+function eliminarRegistro(idRegistro) {
+  if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+    const registroRef = ref(database, `registros/${idRegistro}`);
 
-
-function mostrarToast(mensaje) {
-  const toast = document.getElementById('toast');
-  const toastMessage = document.getElementById('toastMessage');
-
-  // Asigna el mensaje al toast
-  toastMessage.textContent = mensaje;
-
-  // Muestra el toast
-  toast.classList.add('show');
-
-  // Oculta el toast después de 3 segundos
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 3000);
+    remove(registroRef)
+      .then(() => {
+        alert("Registro eliminado correctamente.");
+        buscarRegistros(""); // Recarga los resultados
+      })
+      .catch((error) => {
+        console.error("Error al eliminar el registro:", error);
+      });
+  }
 }
