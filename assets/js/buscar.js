@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Función para buscar registros
+// Función para buscar registros
 async function buscarRegistros(termino) {
   const registrosRef = ref(database, 'registros');
   const snapshot = await get(registrosRef);
@@ -131,13 +132,18 @@ async function buscarRegistros(termino) {
     for (const id in registros) {
       const registro = registros[id];
 
+      // Verifica que los campos existan antes de usar `includes`
+      const camposBusqueda = [
+        registro.numeroTag,
+        registro.numeroAlta,
+        registro.nombreSolicitante,
+        registro.placas,
+        registro.modelo
+      ];
+
       // Busca en los campos especificados
       if (
-        registro.numeroTag.includes(termino) ||
-        registro.numeroAlta.includes(termino) ||
-        registro.nombreSolicitante.includes(termino) ||
-        registro.placas.includes(termino) ||
-        registro.modelo.includes(termino)
+        camposBusqueda.some((campo) => campo && campo.includes(termino))
       ) {
         resultados.push({ ...registro, id }); // Guarda el ID del registro
       }
