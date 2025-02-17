@@ -18,17 +18,21 @@
         </a>
     </nav>
 
-    <input type="text" id="busqueda" placeholder="Buscar por Número de Tag, Número de Alta, Nombre, Placas o Modelo">
-    <button id="btnBuscar">Buscar</button>
+    <div class="buscar__contenedor">
+        <input class="buscar__input" type="text" id="busqueda"
+            placeholder="Buscar por Número de Tag, Número de Alta, Nombre, Placas o Modelo">
+        <button class="buscar__boton btn__primary" id="btnBuscar">Buscar</button>
+    </div>
+
 
     <!-- Tabla para mostrar resultados -->
-    <table id="tablaResultados">
+    <table id="tablaResultados" class="tabla__resultados">
         <thead>
             <tr>
-                <th>Número de Tag</th>
-                <th>Número de Alta</th>
-                <th>Nombre del Local</th>
-                <th>Nombre del Solicitante</th>
+                <th>No. Tag</th>
+                <th>No. Alta</th>
+                <th>Local</th>
+                <th>Solicitante</th>
                 <th>Empresa / Proyecto</th>
                 <th>Status de Activación</th>
                 <th>Status de Entrega</th>

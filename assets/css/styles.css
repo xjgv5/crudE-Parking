@@ -87,7 +87,7 @@ html {
     color: var(--color-background);
 }
 
-/* Formulario */
+/* Formulario para agregar */
 
 .formulario {
     border: 2px solid red;
@@ -104,6 +104,21 @@ html {
 .formulario__input {
     width: 200px;
     margin: 6px 10px;
+}
+
+/* _______ contenedor de busqueda_______ */
+.buscar__contenedor {
+    border: 2px solid rebeccapurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.buscar__input {
+    width: 300px;
+    padding: 5px 8px;
 }
 
 /* ------------Tabla de resultados */
@@ -171,12 +186,12 @@ html {
     margin: 0 auto;
     border: 2px solid red;
     table-layout: fixed;
-    width: 100%;
+    width: 80%;
 
 }
 
 
-/* ____________  adicionales _______________ */
+/* ____________  adicionales (toast) _______________ */
 
 
 .toast {
@@ -238,4 +253,17 @@ html {
         bottom: 0;
         opacity: 0;
     }
+}
+
+/* _---------- provisional para los estilos de nueva pension----
+
+- */
+
+.formulario__pension {
+    margin: 0 auto;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
