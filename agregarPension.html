@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Pensiones</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css">
     <style>
         /* Estilos básicos para el formulario y la tabla */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            /* margin: 20px; */
         }
 
         form {
@@ -67,117 +70,129 @@
 </head>
 
 <body>
-    <h1>Registro de Pensiones</h1>
+
+    <nav class="navegacion">
+        <a class="navegacion__btn-regreso" href="index.html">
+            <i class="btn-regreso__icon fa-solid fa-arrow-left"></i>
+        </a>
+    </nav>
 
     <!-- Formulario de registro -->
-    <form id="formPension">
-        <label for="numeroTag">Número de Tag:</label>
-        <input type="text" id="numeroTag">
 
-        <label for="statusActivacion">Status de activación:</label>
-        <select id="statusActivacion">
-            <option value="Activo">Activo</option>
-            <option value="No activo">No activo</option>
-        </select>
+    <div class="contenedor__formulario">
+        <h1>Registro de Pensiones</h1>
+        <form class="formulario__pension" id="formPension">
+            <label for="numeroTag">Número de Tag:</label>
+            <input type="text" id="numeroTag">
 
-        <label for="nomenclaturaLocal">Nomenclatura del local:</label>
-        <input type="text" id="nomenclaturaLocal">
+            <label for="statusActivacion">Status de activación:</label>
+            <select id="statusActivacion">
+                <option value="Activo">Activo</option>
+                <option value="No activo">No activo</option>
+            </select>
 
-        <label for="nombreLocal">Nombre del local:</label>
-        <input type="text" id="nombreLocal">
+            <label for="nomenclaturaLocal">Nomenclatura del local:</label>
+            <input type="text" id="nomenclaturaLocal">
 
-        <label for="nombreSolicitante">Nombre del solicitante:</label>
-        <input type="text" id="nombreSolicitante">
+            <label for="nombreLocal">Nombre del local:</label>
+            <input type="text" id="nombreLocal">
 
-        <label for="solicitaFactura">Solicita factura:</label>
-        <select id="solicitaFactura">
-            <option value="Si">Sí</option>
-            <option value="No">No</option>
-        </select>
+            <label for="nombreSolicitante">Nombre del solicitante:</label>
+            <input type="text" id="nombreSolicitante">
 
-        <label for="metodoPago">Método de pago:</label>
-        <select id="metodoPago">
-            <option value="Efectivo">Efectivo</option>
-            <option value="Transferencia">Transferencia</option>
-            <option value="Pago con tarjeta">Pago con tarjeta</option>
-        </select>
+            <label for="solicitaFactura">Solicita factura:</label>
+            <select id="solicitaFactura">
+                <option value="Si">Sí</option>
+                <option value="No">No</option>
+            </select>
 
-        <label for="fechaContratacion">Fecha de contratación:</label>
-        <input type="date" id="fechaContratacion">
+            <label for="metodoPago">Método de pago:</label>
+            <select id="metodoPago">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Pago con tarjeta">Pago con tarjeta</option>
+            </select>
 
-        <label for="statusPago">Status de pago:</label>
-        <select id="statusPago">
-            <option value="Activo">Activo</option>
-            <option value="No activo">No activo</option>
-        </select>
+            <label for="fechaContratacion">Fecha de contratación:</label>
+            <input type="date" id="fechaContratacion">
 
-        <label for="mesesPagados">Meses pagados:</label>
-        <input type="number" id="mesesPagados" min="1">
+            <label for="statusPago">Status de pago:</label>
+            <select id="statusPago">
+                <option value="Activo">Activo</option>
+                <option value="No activo">No activo</option>
+            </select>
 
-        <label for="fechaInicio">Fecha de inicio:</label>
-        <input type="date" id="fechaInicio">
+            <label for="mesesPagados">Meses pagados:</label>
+            <input type="number" id="mesesPagados" min="1">
 
-        <label for="lugar">Lugar:</label>
-        <input type="text" id="lugar">
+            <label for="fechaInicio">Fecha de inicio:</label>
+            <input type="date" id="fechaInicio">
 
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono">
+            <label for="lugar">Lugar:</label>
+            <input type="text" id="lugar">
 
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono">
 
-        <label for="modelo">Modelo:</label>
-        <input type="text" id="modelo">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo">
 
-        <label for="color">Color:</label>
-        <input type="text" id="color">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo">
 
-        <label for="placas">Placas:</label>
-        <input type="text" id="placas">
+            <label for="color">Color:</label>
+            <input type="text" id="color">
 
-        <label for="año">Año:</label>
-        <input type="number" id="año" min="1900" max="2099">
+            <label for="placas">Placas:</label>
+            <input type="text" id="placas">
 
-        <label for="notas">Notas:</label>
-        <textarea id="notas" rows="4"></textarea>
+            <label for="año">Año:</label>
+            <input type="number" id="año" min="1900" max="2099">
 
-        <button type="submit">Guardar</button>
-    </form>
+            <label for="notas">Notas:</label>
+            <textarea id="notas" rows="4"></textarea>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+
+        <h2 class="tabla__titulo">Datos de Pensiones</h2>
+
+        <table id="tablaPensiones">
+            <thead>
+                <tr>
+                    <th>Número de Tag</th>
+                    <th>Status de activación</th>
+                    <th>Nomenclatura del local</th>
+                    <th>Nombre del local</th>
+                    <th>Nombre del solicitante</th>
+                    <th>Solicita factura</th>
+                    <th>Método de pago</th>
+                    <th>Fecha de contratación</th>
+                    <th>Status de pago</th>
+                    <th>Meses pagados</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de vencimiento</th>
+                    <th>Días por vencer</th>
+                    <th>Estado</th>
+                    <th>Lugar</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Placas</th>
+                    <th>Año</th>
+                    <th>Notas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos se insertarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
 
     <!-- Tabla para mostrar los datos -->
-    <h2>Datos de Pensiones</h2>
-    <table id="tablaPensiones">
-        <thead>
-            <tr>
-                <th>Número de Tag</th>
-                <th>Status de activación</th>
-                <th>Nomenclatura del local</th>
-                <th>Nombre del local</th>
-                <th>Nombre del solicitante</th>
-                <th>Solicita factura</th>
-                <th>Método de pago</th>
-                <th>Fecha de contratación</th>
-                <th>Status de pago</th>
-                <th>Meses pagados</th>
-                <th>Fecha de inicio</th>
-                <th>Fecha de vencimiento</th>
-                <th>Días por vencer</th>
-                <th>Estado</th>
-                <th>Lugar</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
-                <th>Modelo</th>
-                <th>Color</th>
-                <th>Placas</th>
-                <th>Año</th>
-                <th>Notas</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Los datos se insertarán aquí dinámicamente -->
-        </tbody>
-    </table>
 
     <!-- Enlaza el archivo JavaScript -->
     <script type="module" src="assets/js/agregarPension.js"></script>
