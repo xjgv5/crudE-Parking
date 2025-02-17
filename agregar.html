@@ -19,60 +19,91 @@
         </a>
     </nav>
 
-    <div class="container">
+    <div class="contenedor__formulario">
         <h1 class="container__title">Agregar</h1>
 
-        <form id="registroForm" class="formulario">
+        <form id="registroForm" class="formulario__general">
             <!-- .formulario__contenedor -->
-            <label class="formulario__etiqueta" for="numeroTag">Número de Tag:</label>
-            <input class="formulario__input" type="text" id="numeroTag">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="numeroTag">Número de Tag:</label>
+                <input class="formulario__input" type="text" id="numeroTag">
+            </div>
 
-            <label class="formulario__etiqueta" for="numeroAlta">Número de Alta:</label>
-            <input class="formulario__input" type="text" id="numeroAlta">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="numeroAlta">Número de Alta:</label>
+                <input class="formulario__input" type="text" id="numeroAlta">
+            </div>
 
-            <label class="formulario__etiqueta" for="nombreLocal">Nombre del Local:</label>
-            <input class="formulario__input" type="text" id="nombreLocal">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="nombreLocal">Nombre del Local:</label>
+                <input class="formulario__input" type="text" id="nombreLocal">
+            </div>
 
-            <label class="formulario__etiqueta" for="nombreSolicitante">Nombre del Solicitante:</label>
-            <input class="formulario__input" type="text" id="nombreSolicitante">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="nombreSolicitante">Nombre del Solicitante:</label>
+                <input class="formulario__input" type="text" id="nombreSolicitante">
+            </div>
 
-            <label class="formulario__etiqueta" for="empresaProyecto">Empresa / Proyecto:</label>
-            <input class="formulario__input" type="text" id="empresaProyecto">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="empresaProyecto">Empresa / Proyecto:</label>
+                <input class="formulario__input" type="text" id="empresaProyecto">
+            </div>
 
-            <label class="formulario__etiqueta" for="statusActivacion">Status de Activación:</label>
-            <select id="statusActivacion">
-                <option value="No activado">No activado</option>
-                <option value="Activado">Activado</option>
-            </select>
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="statusActivacion">Status de Activación:</label>
+                <select id="statusActivacion">
+                    <option value="No activado">No activado</option>
+                    <option value="Activado">Activado</option>
+                </select>
+            </div>
 
-            <label class="formulario__etiqueta" for="statusEntrega">Status de Entrega:</label>
-            <select id="statusEntrega">
-                <option value="No entregado">No entregado</option>
-                <option value="Entregado">Entregado</option>
-            </select>
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="statusEntrega">Status de Entrega:</label>
+                <select id="statusEntrega">
+                    <option value="No entregado">No entregado</option>
+                    <option value="Entregado">Entregado</option>
+                </select>
+            </div>
 
-            <label class="formulario__etiqueta" for="fechaAlta">Fecha de Alta:</label>
-            <input class="formulario__input" type="date" id="fechaAlta">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="fechaAlta">Fecha de Alta:</label>
+                <input class="formulario__input" type="date" id="fechaAlta">
+            </div>
 
-            <label class="formulario__etiqueta" for="telefono">Teléfono:</label>
-            <input class="formulario__input" type="tel" id="telefono">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="telefono">Teléfono:</label>
+                <input class="formulario__input" type="tel" id="telefono">
+            </div>
 
-            <label class="formulario__etiqueta" for="correo">Correo:</label>
-            <input class="formulario__input" type="email" id="correo">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="correo">Correo:</label>
+                <input class="formulario__input" type="email" id="correo">
+            </div>
 
-            <label class="formulario__etiqueta" for="modelo">Modelo:</label>
-            <input class="formulario__input" type="text" id="modelo">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="modelo">Modelo:</label>
+                <input class="formulario__input" type="text" id="modelo">
+            </div>
 
-            <label class="formulario__etiqueta" for="color">Color:</label>
-            <input class="formulario__input" type="text" id="color">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="color">Color:</label>
+                <input class="formulario__input" type="text" id="color">
+            </div>
 
-            <label class="formulario__etiqueta" for="placas">Placas:</label>
-            <input class="formulario__input" type="text" id="placas">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="placas">Placas:</label>
+                <input class="formulario__input" type="text" id="placas">
+            </div>
 
-            <label class="formulario__etiqueta" for="anio">Año:</label>
-            <input class="formulario__input" type="number" id="anio">
+            <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="anio">Año:</label>
+                <input class="formulario__input" type="number" id="anio">
+            </div>
 
-            <button class="btn__primary" type="submit">Guardar</button>
+            <div class="formulario__campo campo__full">
+                <button class="btn__primary-big btn__full" type="submit">Guardar</button>
+            </div>
+
         </form>
 
 

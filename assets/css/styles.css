@@ -6,6 +6,50 @@ html {
     font-family: 'Roboto';
 }
 
+td {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
 .container {
     width: 100%;
     height: 100vh;
@@ -102,14 +146,15 @@ html {
     margin-right: 10px;
 }
 
+/* 
 .formulario__input {
     width: 200px;
     margin: 6px 10px;
-}
+} */
 
 /* _______ contenedor de busqueda_______ */
 .buscar__contenedor {
-    border: 2px solid rebeccapurple;
+    /* border: 2px solid rebeccapurple; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +192,8 @@ html {
 
 
 /* Estilos para el botón de la clase .slide */
-.btn__primary {
+.btn__primary,
+.btn__primary-big {
     --color: white;
     /* Color base */
     --hover: var(--color-background);
@@ -167,10 +213,24 @@ html {
     /* Transición suave */
 }
 
+.btn__primary-big {
+    transition: .5s;
+}
+
 /* Efecto al hacer hover o focus */
 .btn__primary:hover,
 .btn__primary:focus {
     box-shadow: inset 6.5em 0 0 0 var(--hover);
+    /* Sombra interna que llena el botón */
+    border-color: var(--hover);
+    /* Cambia el color del borde */
+    color: #fff;
+    /* Cambia el color del texto a blanco */
+}
+
+.btn__primary-big:hover,
+.btn__primary-big:focus {
+    box-shadow: inset 95em 0 0 0 var(--hover);
     /* Sombra interna que llena el botón */
     border-color: var(--hover);
     /* Cambia el color del borde */
@@ -185,7 +245,7 @@ html {
 
 .tabla__resultados {
     margin: 0 auto;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     table-layout: fixed;
     width: 80%;
 
@@ -256,21 +316,42 @@ html {
     }
 }
 
-/* _---------- provisional para los estilos de nueva pension----
+/* _---------- provisional para los estilos de nueva pension----- */
 
-- */
-
-.formulario__pension {
+.formulario__general {
     margin: 0 auto;
     /* border: 2px solid red; */
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 /* Formulario de pensiones */
+.tabla__contenedor {
+    width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+
 .contenedor__formulario {
     padding: 20px 30px;
+}
 
+.campo__full {
+    grid-column: span 2;
+}
+
+.formulario__campo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.btn__full {
+    width: 100%;
+    height: 50px;
 }
