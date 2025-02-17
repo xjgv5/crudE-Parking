@@ -198,14 +198,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Función para actualizar un registro
   function actualizarPension(id) {
-    // Obtén los valores del formulario (similar al envío del formulario)
-    // ...
+    // Obtén los valores del formulario
+    const numeroTag = document.getElementById('numeroTag').value;
+    const statusActivacion = document.getElementById('statusActivacion').value;
+    const nomenclaturaLocal = document.getElementById('nomenclaturaLocal').value;
+    const nombreLocal = document.getElementById('nombreLocal').value;
+    const nombreSolicitante = document.getElementById('nombreSolicitante').value;
+    const solicitaFactura = document.getElementById('solicitaFactura').value;
+    const metodoPago = document.getElementById('metodoPago').value;
+    const fechaContratacion = document.getElementById('fechaContratacion').value;
+    const statusPago = document.getElementById('statusPago').value;
+    const mesesPagados = parseInt(document.getElementById('mesesPagados').value, 10);
+    const fechaInicio = document.getElementById('fechaInicio').value;
+    const lugar = document.getElementById('lugar').value;
+    const telefono = document.getElementById('telefono').value;
+    const correo = document.getElementById('correo').value;
+    const modelo = document.getElementById('modelo').value;
+    const color = document.getElementById('color').value;
+    const placas = document.getElementById('placas').value;
+    const año = document.getElementById('año').value;
+    const notas = document.getElementById('notas').value;
+
+    // Calcula la fecha de vencimiento
+    const fechaContratacionObj = new Date(fechaContratacion);
+    const fechaVencimientoObj = new Date(fechaContratacionObj);
+    fechaVencimientoObj.setMonth(fechaContratacionObj.getMonth() + mesesPagados);
+    const fechaVencimiento = fechaVencimientoObj.toISOString().split('T')[0];
+
+    // Calcula los días por vencer
+    const hoy = new Date();
+    const diffTime = fechaVencimientoObj - hoy;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diasPorVencer = diffDays > 0 ? diffDays : 0;
+
+    // Determina el estado
+    const estado = diffDays > 0 ? "Vigente" : "Vencido";
+
+    // Crea el objeto con los datos actualizados
+    const registroActualizado = {
+      numeroTag,
+      statusActivacion,
+      nomenclaturaLocal,
+      nombreLocal,
+      nombreSolicitante,
+      solicitaFactura,
+      metodoPago,
+      fechaContratacion,
+      statusPago,
+      mesesPagados,
+      fechaInicio,
+      fechaVencimiento,
+      diasPorVencer,
+      estado,
+      lugar,
+      telefono,
+      correo,
+      modelo,
+      color,
+      placas,
+      año,
+      notas
+    };
 
     // Actualiza el registro en Firebase
     update(ref(database, `pensiones/${id}`), registroActualizado)
       .then(() => {
         alert("Registro actualizado correctamente.");
         cargarPensiones(); // Recarga los datos en la tabla
+        // Restaura el botón de "Guardar"
+        const btnGuardar = document.querySelector('#formPension button[type="submit"]');
+        btnGuardar.textContent = "Guardar";
+        btnGuardar.onclick = (e) => {
+          e.preventDefault();
+          formPension.dispatchEvent(new Event('submit'));
+        };
       })
       .catch((error) => {
         console.error("Error al actualizar el registro:", error);
