@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const celdaAcciones = fila.insertCell();
       const btnEditar = document.createElement('button');
       btnEditar.textContent = "Editar";
+      btnEditar.classList.add // agregar clases !!
       btnEditar.addEventListener('click', () => abrirModalEditar(id, pension));
       celdaAcciones.appendChild(btnEditar);
 

@@ -29,6 +29,73 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Encabezados personalizados
+const encabezadosRegistros = [
+  { header: "Número de Tag", key: "numeroTag" },
+  { header: "Número de Alta", key: "numeroAlta" },
+  { header: "Nombre del Local", key: "nombreLocal" },
+  { header: "Nombre del Solicitante", key: "nombreSolicitante" },
+  { header: "Empresa / Proyecto", key: "empresaProyecto" },
+  { header: "Status de Activación", key: "statusActivacion" },
+  { header: "Status de Entrega", key: "statusEntrega" },
+  { header: "Fecha de Alta", key: "fechaAlta" },
+  { header: "Teléfono", key: "telefono" },
+  { header: "Correo", key: "correo" },
+  { header: "Modelo", key: "modelo" },
+  { header: "Color", key: "color" },
+  { header: "Placas", key: "placas" },
+  { header: "Año", key: "año" }
+];
+
+const encabezadosPensiones = [
+  { header: "Número de Tag", key: "numeroTag" },
+  { header: "Status de Activación", key: "statusActivacion" },
+  { header: "Nomenclatura del Local", key: "nomenclaturaLocal" },
+  { header: "Nombre del Local", key: "nombreLocal" },
+  { header: "Nombre del Solicitante", key: "nombreSolicitante" },
+  { header: "Solicita Factura", key: "solicitaFactura" },
+  { header: "Método de Pago", key: "metodoPago" },
+  { header: "Fecha de Contratación", key: "fechaContratacion" },
+  { header: "Status de Pago", key: "statusPago" },
+  { header: "Meses Pagados", key: "mesesPagados" },
+  { header: "Fecha de Inicio", key: "fechaInicio" },
+  { header: "Fecha de Vencimiento", key: "fechaVencimiento" },
+  { header: "Días por Vencer", key: "diasPorVencer" },
+  { header: "Estado", key: "estado" },
+  { header: "Lugar", key: "lugar" },
+  { header: "Teléfono", key: "telefono" },
+  { header: "Correo", key: "correo" },
+  { header: "Modelo", key: "modelo" },
+  { header: "Color", key: "color" },
+  { header: "Placas", key: "placas" },
+  { header: "Año", key: "año" },
+  { header: "Notas", key: "notas" }
+];
+
+// Estilo para los encabezados
+const estiloEncabezado = {
+  font: { bold: true, color: { rgb: "FFFFFF" } }, // Texto en negrita y color blanco
+  fill: { fgColor: { rgb: "4F81BD" } }, // Fondo azul
+  alignment: { horizontal: "center" } // Texto centrado
+};
+
+// Función para crear una hoja con encabezados personalizados
+function crearHojaConEncabezados(datos, encabezados) {
+  // Convierte los datos a un arreglo de objetos
+  const datosArray = Object.values(datos);
+
+  // Crea una hoja de Excel con los datos
+  const hoja = XLSX.utils.json_to_sheet(datosArray, { header: encabezados.map(e => e.key) });
+
+  // Aplica estilos a los encabezados
+  XLSX.utils.sheet_add_aoa(hoja, [encabezados.map(e => e.header)], { origin: "A1" });
+  for (let i = 0; i < encabezados.length; i++) {
+    hoja[XLSX.utils.encode_cell({ r: 0, c: i })].s = estiloEncabezado;
+  }
+
+  return hoja;
+}
+
 // Función para descargar la base de datos en Excel
 async function descargarBaseDeDatosEnExcel() {
   try {
@@ -42,19 +109,15 @@ async function descargarBaseDeDatosEnExcel() {
     const pensionesSnapshot = await get(pensionesRef);
     const pensiones = pensionesSnapshot.exists() ? pensionesSnapshot.val() : {};
 
-    // Convierte los datos a un formato compatible con SheetJS
-    const registrosArray = Object.values(registros);
-    const pensionesArray = Object.values(pensiones);
-
     // Crea un libro de Excel
     const workbook = XLSX.utils.book_new();
 
     // Crea una hoja para los registros
-    const registrosSheet = XLSX.utils.json_to_sheet(registrosArray);
+    const registrosSheet = crearHojaConEncabezados(registros, encabezadosRegistros);
     XLSX.utils.book_append_sheet(workbook, registrosSheet, "Registros");
 
     // Crea una hoja para las pensiones
-    const pensionesSheet = XLSX.utils.json_to_sheet(pensionesArray);
+    const pensionesSheet = crearHojaConEncabezados(pensiones, encabezadosPensiones);
     XLSX.utils.book_append_sheet(workbook, pensionesSheet, "Pensiones");
 
     // Genera el archivo Excel

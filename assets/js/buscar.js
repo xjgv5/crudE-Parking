@@ -40,8 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modalEditar');
   const formEditar = document.getElementById('formEditar');
   const btnCerrarModal = document.getElementById('btnCerrarModal');
+  const btnCerrarModalIcon = document.getElementById('btnCerrarModalIcon')
 
-  if (modal && formEditar && btnCerrarModal) {
+  if (modal && formEditar && btnCerrarModal &&btnCerrarModalIcon) {
     // Función para abrir el modal de edición
     window.abrirModalEditar = (registro) => {
       modal.style.display = "flex";
@@ -71,6 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCerrarModal.addEventListener('click', () => {
       modal.style.display = "none";
     });
+
+    //funcion para cerrar el modal desde el icono de cerrado
+    btnCerrarModalIcon.addEventListener('click', () => {
+      modal.style.display = "none"
+    })
 
     // Función para guardar los cambios en Firebase
     formEditar.addEventListener('submit', (e) => {
@@ -185,12 +191,16 @@ function mostrarResultadosModal(resultados) {
       const celdaAcciones = fila.insertCell();
       const btnEditar = document.createElement('button');
       btnEditar.textContent = "Editar";
+      btnEditar.classList.add('btn__fBuscar')
+      btnEditar.classList.add('btnEditar__fBuscar')
       btnEditar.addEventListener('click', () => abrirModalEditar(registro));
       celdaAcciones.appendChild(btnEditar);
 
       // Agrega un botón "Eliminar"
       const btnEliminar = document.createElement('button');
       btnEliminar.textContent = "Eliminar";
+      btnEliminar.classList.add('btn__fBuscar')
+      btnEliminar.classList.add('btnEditar__fEliminar')
       btnEliminar.addEventListener('click', () => eliminarRegistro(registro.id));
       celdaAcciones.appendChild(btnEliminar);
     });
