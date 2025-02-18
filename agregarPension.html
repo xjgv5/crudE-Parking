@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js" defer></script>
     <style>
         /* Estilos básicos para el formulario y la tabla */
     </style>
@@ -20,6 +21,13 @@
             <i class="btn-regreso__icon fa-solid fa-arrow-left"></i>
         </a>
     </nav>
+
+    <div class="contenedor__botonDescarga">
+        <button class="btn__descarga-excel" id="btnDescargarExcel">
+            <i class="fa-solid fa-file-excel icono__btn-excel"></i>
+            Descargar Excel
+        </button>
+    </div>
 
     <!-- Formulario de registro -->
 
@@ -182,6 +190,7 @@
 
     <!-- Enlaza el archivo JavaScript -->
     <script type="module" src="assets/js/agregarPension.js"></script>
+    <script type="module" src="assets/js/descargaExcel.js"></script>
 </body>
 
 </html>

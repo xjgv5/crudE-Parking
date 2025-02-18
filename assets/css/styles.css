@@ -239,15 +239,19 @@ th {
 }
 
 .contenedor__tabla {
-    width: 85%;
+    width: 100%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
     margin: 0 auto;
+    padding: 0 30px;
 }
 
 .tabla__resultados {
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* border: 2px solid red; */
     table-layout: fixed;
-    width: 80%;
+    width: 100%;
 
 }
 
@@ -354,4 +358,30 @@ th {
 .btn__full {
     width: 100%;
     height: 50px;
+    margin-bottom: 40px;
+}
+
+/* ______ descarga de excel_________ */
+.contenedor__botonDescarga {
+    width: 100%;
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: end;
+    padding: 20px 25px;
+    margin-bottom: 0;
+}
+
+.btn__descarga-excel {
+    padding: 15px 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: white;
+    border: none;
+    background-color: green;
+    cursor: pointer;
+}
+
+.icono__btn-excel {
+    font-size: 20px;
 }
