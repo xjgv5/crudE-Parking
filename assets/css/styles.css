@@ -54,46 +54,77 @@ th {
     width: 100%;
     height: 100vh;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     /* border: 2px solid red; */
     padding: 20px 50px;
+    background-color: var(--color-background);
 }
 
-.container__title {
-    font-weight: 400;
-    margin-bottom: 10px;
-}
-
-.buttons {
-    /* border: 2px solid red; */
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
-    border-radius: 10px;
-    width: 70%;
-    height: 100%;
+.contenedor__logo {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
-.button__container {
+.logo__index {
+    width: 40%;
+}
+
+.contenedor__botones {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    width: 70%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.botones__btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boton {
     border: 2px solid var(--color-background);
-    /* border-radius: 5px; */
     width: 200px;
     height: 80px;
     padding: 10px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     cursor: pointer;
-    margin-bottom: 30px;
+    overflow: hidden;
 }
 
-.button__icon {
-    margin-bottom: 5px;
+.boton__texto {
+    position: fixed;
+    transition: all 300ms ease-in-out;
+    font-size: 22px;
+    width: 80px;
+    text-align: center;
+}
+
+.icono__boton {
+    margin-right: 250px;
+    transition: all 300ms ease-in-out;
+}
+
+.boton:hover .icono__boton {
+    margin-right: 90px;
+}
+
+.boton:hover .boton__texto {
+    /* position: relative; */
+    margin-left: 50px;
 }
 
 .navegacion {
@@ -170,7 +201,7 @@ th {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 30px;
+    padding: 10px 30px;
 }
 
 .buscar__input {
@@ -377,13 +408,15 @@ th {
 }
 
 /* ______ descarga de excel_________ */
-.contenedor__botonDescarga {
+.contenedor__titulo {
     width: 100%;
     /* border: 2px solid green; */
     display: flex;
     justify-content: end;
     padding: 20px 25px;
     margin-bottom: 0;
+    justify-content: space-between;
+
 }
 
 .btn__descarga-excel {

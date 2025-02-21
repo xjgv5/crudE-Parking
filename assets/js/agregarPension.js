@@ -154,12 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const celdaAcciones = fila.insertCell();
       const btnEditar = document.createElement('button');
       btnEditar.textContent = "Editar";
-      btnEditar.classList.add // agregar clases !!
+      btnEditar.classList.add('btn__fBuscar') 
+      btnEditar.classList.add('btnEditar__fBuscar')
       btnEditar.addEventListener('click', () => abrirModalEditar(id, pension));
       celdaAcciones.appendChild(btnEditar);
 
       const btnEliminar = document.createElement('button');
       btnEliminar.textContent = "Eliminar";
+      btnEliminar.classList.add('btn__fBuscar')
+      btnEliminar.classList.add('btnEditar__fEliminar')
       btnEliminar.addEventListener('click', () => eliminarPension(id));
       celdaAcciones.appendChild(btnEliminar);
     }

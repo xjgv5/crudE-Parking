@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js" defer></script>
-    <style>
-        /* Estilos básicos para el formulario y la tabla */
-    </style>
+
 </head>
 
 <body>
 
+    <!-- Barra de navegacion -->
     <nav class="navegacion">
         <a class="navegacion__btn-regreso" href="index.html">
             <i class="btn-regreso__icon fa-solid fa-arrow-left"></i>
@@ -27,7 +26,9 @@
     </nav>
 
 
-    <div class="contenedor__botonDescarga">
+    <div class="contenedor__titulo">
+        <h1 class="titulo">Registro de Pensiones</h1>
+
         <button class="btn__descarga-excel" id="btnDescargarExcel">
             <i class="fa-solid fa-file-excel icono__btn-excel"></i>
             Descargar Excel
@@ -37,7 +38,6 @@
     <!-- Formulario de registro -->
 
     <div class="contenedor__formulario">
-        <h1>Registro de Pensiones</h1>
         <form class="formulario__general" id="formPension">
             <div class="formulario__campo">
                 <label for="numeroTag">Número de Tag:</label>
