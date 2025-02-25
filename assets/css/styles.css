@@ -530,3 +530,7 @@ th {
 .btnEditar__fEliminar {
     background-color: red;
 }
+
+.btnRenovar__fBuscar {
+    background-color: #00796B;
+}
