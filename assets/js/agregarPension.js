@@ -330,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actualiza el registro en Firebase
     update(ref(database, `pensiones/${id}`), registroActualizado)
       .then(() => {
+        formPension.reset();
         mostrarToast("Registro actualizado correctamente.");
         cargarPensiones(); // Recarga los datos en la tabla
         // Restaura el botón de "Guardar"
