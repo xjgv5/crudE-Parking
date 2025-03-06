@@ -8,6 +8,12 @@ html {
 
 td {
     text-align: center;
+    width: fit-content;
+
+}
+
+tbody {
+    width: fit-content;
 }
 
 form {
@@ -290,13 +296,24 @@ th {
 }
 
 .tabla__resultados {
-    /* margin: 0 auto; */
-    /* border: 2px solid red; */
+    overflow-x: auto;
     table-layout: fixed;
     width: 100%;
 
     margin-bottom: 30px;
 
+}
+
+.tabla__resultados td {
+    white-space: nowrap;
+    /* Evita que el texto se divida en varias líneas */
+    overflow: hidden;
+    /* height: auto */
+    /* Oculta el contenido que excede */
+    text-overflow: ellipsis;
+    /* Muestra "..." cuando el texto es demasiado largo */
+    max-width: 250px;
+    /* Establece un ancho máximo para la celda */
 }
 
 
